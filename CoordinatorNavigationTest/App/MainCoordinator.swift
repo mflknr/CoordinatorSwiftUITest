@@ -13,10 +13,10 @@ struct MainCoordinator: Coordinator {
     @ObservedObject var viewModel: MainCoordinator.ViewModel
 
     var body: some View {
-        Router($viewModel.routes) { screen, _ in
-            switch screen {
+        Router($viewModel.routes) { coordinator, _ in
+            switch coordinator {
             case .tab:
-                TabCoordinator()
+                TabCoordinator(viewModel: .init())
             case .welcome:
                 WelcomeCoordinator(onFinishedWelcome: viewModel.onFinishedWelcome)
             }

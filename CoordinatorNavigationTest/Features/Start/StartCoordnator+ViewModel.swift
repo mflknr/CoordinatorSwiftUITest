@@ -14,7 +14,7 @@ extension StartCoordinator {
         case onDetailsTapped
     }
 
-    class ViewModel: ObservableObject {
+    class ViewModel: CoordinatorModel {
 
         enum Screen {
             case start(StartScreen.ViewModel)

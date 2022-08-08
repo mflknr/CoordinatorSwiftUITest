@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension StartScreen {
-    class ViewModel: ObservableObject {
+    class ViewModel: BaseViewModel {
         @Published var detailsButtonText = "Zu den Details"
         @Published var whatsNewButtonText = "Öffne WhatsNew"
         @Published var navTitle = "Start"

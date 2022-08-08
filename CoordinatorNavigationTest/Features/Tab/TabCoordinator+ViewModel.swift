@@ -9,7 +9,18 @@ import SwiftUI
 import FlowStacks
 
 extension TabCoordinator {
-    class ViewModel: ObservableObject {
-        @Published var routes: Route<>
+    enum Tab: Int {
+        case start = 0
+        case settings
+    }
+
+    class ViewModel: CoordinatorModel {
+        enum Screen {
+            case tab
+            case authentication
+            case web
+        }
+
+        @State var selectedTab: Tab = .start
     }
 }

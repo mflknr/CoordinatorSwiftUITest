@@ -14,7 +14,7 @@ extension MainCoordinator {
         case welcome
     }
 
-    class ViewModel: ObservableObject {
+    class ViewModel: CoordinatorModel {
         @Published var routes: Routes<Screen> = []
 
         init() {
