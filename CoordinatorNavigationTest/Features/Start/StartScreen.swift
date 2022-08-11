@@ -15,13 +15,8 @@ struct StartScreen: View {
         Form {
             Section {
                 Text(viewModel.detailsButtonText)
-                    .onTapGesture {
-                        viewModel.onDetailsButton()
-                    }
                 Text(viewModel.whatsNewButtonText)
-                    .onTapGesture {
-                        viewModel.onWhatsNewTriggered()
-                    }
+
             } header: {
                 Text("Deine Möglichkeiten heute")
             }
@@ -29,6 +24,17 @@ struct StartScreen: View {
             Section {
                 ForEach(viewModel.books) { book in
                     Text(book.name)
+                        .onTapGesture {
+                            viewModel.onDetailsTap(book)
+                        }
+                }
+            } header: {
+                Text("Books")
+            }
+
+            Section {
+                Button("Reset Welcome") {
+                    UserDefaults.standard.removeObject(forKey: "kUserFinishedWelcome")
                 }
             }
         }

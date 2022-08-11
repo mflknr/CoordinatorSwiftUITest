@@ -17,8 +17,8 @@ struct StartCoordinator: Coordinator {
             switch screen {
             case .start(let viewModel):
                 StartScreen(viewModel: viewModel)
-            case .startDetails:
-                StartDetailsScreen()
+            case .startDetails(let viewModel):
+                StartDetailsScreen(viewModel: viewModel)
             }
         }
     }

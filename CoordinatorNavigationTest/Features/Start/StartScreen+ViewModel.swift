@@ -21,15 +21,26 @@ extension StartScreen {
         @Published var navTitle = "Start"
         @Published var books: [Book] = []
 
-        private let repository = OneApiRepository()
+        private lazy var repository = { OneApiRepository() }()
         private let onNavigationIntent: (StartCoordinator.NavigationIntent) -> Void
         private var cancellables = Set<AnyCancellable>()
+        private let connectable = repository
+            .getBooks()
+            .replaceError(with: nil)
+            .share()
+            .makeConnectable()
 
         init(onNavigationIntent: @escaping (StartCoordinator.NavigationIntent) -> Void) {
             print("StartScreen.ViewModel.Init")
             self.onNavigationIntent = onNavigationIntent
+            let testconnectable = repository
+                .getBooks()
+                .replaceError(with: nil)
+                .share()
+                .makeConnectable()
             repository
                 .getBooks()
+                .share()
                 .receive(on: RunLoop.main)
                 .sink { _ in
                     //
@@ -51,8 +62,8 @@ extension StartScreen {
             repository.fetchBooks()
         }
 
-        func onDetailsButton() {
-            onNavigationIntent(.onDetailsTapped)
+        func onDetailsTap(_ book: Book) {
+            onNavigationIntent(.onDetailsTapped(book))
         }
 
         func onWhatsNewTriggered() {

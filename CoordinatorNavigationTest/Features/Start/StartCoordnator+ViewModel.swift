@@ -11,14 +11,14 @@ import FlowStacks
 extension StartCoordinator {
     enum NavigationIntent {
         case onWhatsNewTriggered
-        case onDetailsTapped
+        case onDetailsTapped(Book)
     }
 
     class ViewModel: CoordinatorModel {
 
         enum Screen {
             case start(StartScreen.ViewModel)
-            case startDetails
+            case startDetails(StartDetailsScreen.ViewModel)
         }
 
         @Published var routes: Routes<Screen> = []
@@ -49,7 +49,7 @@ extension StartCoordinator {
             case .onWhatsNewTriggered:
                 onWhatsNewTriggered()
             case .onDetailsTapped:
-                routes.push(.startDetails)
+                routes.push(.startDetails(.init()))
             }
         }
     }
