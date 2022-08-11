@@ -25,9 +25,16 @@ struct StartScreen: View {
             } header: {
                 Text("Deine Möglichkeiten heute")
             }
+
+            Section {
+                ForEach(viewModel.books) { book in
+                    Text(book.name)
+                }
+            }
         }
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle(viewModel.navTitle)
+        .onAppear(perform: viewModel.onAppear)
     }
 }
 

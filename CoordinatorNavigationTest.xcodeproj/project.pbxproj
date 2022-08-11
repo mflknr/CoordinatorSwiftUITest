@@ -15,6 +15,12 @@
 		7748E1CB28A1BBEE00EF7EB5 /* WebCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1CA28A1BBEE00EF7EB5 /* WebCoordinator.swift */; };
 		7748E1CD28A1BC5C00EF7EB5 /* CoordinatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1CC28A1BC5C00EF7EB5 /* CoordinatorModel.swift */; };
 		7765B05E28A532050061D400 /* WelcomeScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B05D28A532050061D400 /* WelcomeScreen+ViewModel.swift */; };
+		7765B06128A535060061D400 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06028A535060061D400 /* Client.swift */; };
+		7765B06328A538770061D400 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06228A538770061D400 /* Endpoint.swift */; };
+		7765B06628A53B9B0061D400 /* OneApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06528A53B9B0061D400 /* OneApiRepository.swift */; };
+		7765B06828A53C220061D400 /* OneApiLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06728A53C220061D400 /* OneApiLocalDataSource.swift */; };
+		7765B06A28A53C390061D400 /* OneApiRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06928A53C390061D400 /* OneApiRemoteDataSource.swift */; };
+		7765B06C28A54B830061D400 /* BookDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06B28A54B830061D400 /* BookDataModel.swift */; };
 		77AC5543289F14A300EB8DC4 /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 77AC5542289F14A300EB8DC4 /* FlowStacks */; };
 		77AC5545289F1C6500EB8DC4 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AC5544289F1C6500EB8DC4 /* TabCoordinator.swift */; };
 		77AC5547289F1C9900EB8DC4 /* MainCoordinator+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AC5546289F1C9900EB8DC4 /* MainCoordinator+ViewModel.swift */; };
@@ -45,6 +51,12 @@
 		7748E1CA28A1BBEE00EF7EB5 /* WebCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCoordinator.swift; sourceTree = "<group>"; };
 		7748E1CC28A1BC5C00EF7EB5 /* CoordinatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorModel.swift; sourceTree = "<group>"; };
 		7765B05D28A532050061D400 /* WelcomeScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WelcomeScreen+ViewModel.swift"; sourceTree = "<group>"; };
+		7765B06028A535060061D400 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		7765B06228A538770061D400 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		7765B06528A53B9B0061D400 /* OneApiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneApiRepository.swift; sourceTree = "<group>"; };
+		7765B06728A53C220061D400 /* OneApiLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneApiLocalDataSource.swift; sourceTree = "<group>"; };
+		7765B06928A53C390061D400 /* OneApiRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneApiRemoteDataSource.swift; sourceTree = "<group>"; };
+		7765B06B28A54B830061D400 /* BookDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataModel.swift; sourceTree = "<group>"; };
 		77AC5544289F1C6500EB8DC4 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
 		77AC5546289F1C9900EB8DC4 /* MainCoordinator+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+ViewModel.swift"; sourceTree = "<group>"; };
 		77AC554C289FE98D00EB8DC4 /* StartDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDetailsScreen.swift; sourceTree = "<group>"; };
@@ -101,6 +113,26 @@
 				7748E1CA28A1BBEE00EF7EB5 /* WebCoordinator.swift */,
 			);
 			path = Web;
+			sourceTree = "<group>";
+		};
+		7765B05F28A534F70061D400 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7765B06028A535060061D400 /* Client.swift */,
+				7765B06228A538770061D400 /* Endpoint.swift */,
+				7765B06B28A54B830061D400 /* BookDataModel.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7765B06428A53B7C0061D400 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7765B06528A53B9B0061D400 /* OneApiRepository.swift */,
+				7765B06928A53C390061D400 /* OneApiRemoteDataSource.swift */,
+				7765B06728A53C220061D400 /* OneApiLocalDataSource.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		77AC5548289F1FDC00EB8DC4 /* DataPrivacy */ = {
@@ -185,6 +217,8 @@
 		77E913ED288F989E0078C72D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7765B06428A53B7C0061D400 /* Data */,
+				7765B05F28A534F70061D400 /* Networking */,
 				7748E1C628A1B9DB00EF7EB5 /* ViewModel */,
 				77E914032890FEB60078C72D /* Deeplinking */,
 				77E913EE288F98A40078C72D /* Coordinator */,
@@ -334,8 +368,12 @@
 				77E914052890FEC40078C72D /* UniversalLinkMapper.swift in Sources */,
 				77E913FC288F99B20078C72D /* WelcomeScreen.swift in Sources */,
 				77E913F6288F991C0078C72D /* SettingsCoordinator.swift in Sources */,
+				7765B06128A535060061D400 /* Client.swift in Sources */,
+				7765B06C28A54B830061D400 /* BookDataModel.swift in Sources */,
+				7765B06828A53C220061D400 /* OneApiLocalDataSource.swift in Sources */,
 				7748E1C028A1B85300EF7EB5 /* DataPrivacyView.swift in Sources */,
 				77AC554D289FE98D00EB8DC4 /* StartDetailsScreen.swift in Sources */,
+				7765B06628A53B9B0061D400 /* OneApiRepository.swift in Sources */,
 				77AC5545289F1C6500EB8DC4 /* TabCoordinator.swift in Sources */,
 				77E913F0288F98AF0078C72D /* Coordinator.swift in Sources */,
 				77E914022890FC210078C72D /* StartScreen+ViewModel.swift in Sources */,
@@ -343,9 +381,11 @@
 				7748E1C228A1B88300EF7EB5 /* WelcomeCoordinator+ViewModel.swift in Sources */,
 				7748E1C528A1B9B800EF7EB5 /* CountrySelectionView.swift in Sources */,
 				7765B05E28A532050061D400 /* WelcomeScreen+ViewModel.swift in Sources */,
+				7765B06A28A53C390061D400 /* OneApiRemoteDataSource.swift in Sources */,
 				77E913EC288F98760078C72D /* MainCoordinator.swift in Sources */,
 				7748E1CD28A1BC5C00EF7EB5 /* CoordinatorModel.swift in Sources */,
 				77AC5547289F1C9900EB8DC4 /* MainCoordinator+ViewModel.swift in Sources */,
+				7765B06328A538770061D400 /* Endpoint.swift in Sources */,
 				7748E1C828A1B9F300EF7EB5 /* BaseViewModel.swift in Sources */,
 				77E913FE288F99C30078C72D /* StartScreen.swift in Sources */,
 				77AC554F289FECA700EB8DC4 /* TabCoordinator+ViewModel.swift in Sources */,
