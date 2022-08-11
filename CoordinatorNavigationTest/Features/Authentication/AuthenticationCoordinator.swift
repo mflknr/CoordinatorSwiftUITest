@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AuthenticationCoordinator: Coordinator {
-
     var body: some View {
-        Text("Test")
+        Text("AuthenticationCoordinator")
+            .padding()
     }
 }

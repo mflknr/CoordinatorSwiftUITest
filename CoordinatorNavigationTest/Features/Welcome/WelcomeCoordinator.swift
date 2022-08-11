@@ -6,19 +6,30 @@
 //
 
 import SwiftUI
+import FlowStacks
 
 struct WelcomeCoordinator: Coordinator {
 
-    private let onFinishedWelcome: () -> Void
-
-    init(onFinishedWelcome: @escaping () -> Void) {
-        self.onFinishedWelcome = onFinishedWelcome
-    }
+    @ObservedObject var viewModel: WelcomeCoordinator.ViewModel
 
     var body: some View {
-        WelcomeScreen(onWelcomeFinished: {
-            print("WelcomeCoordinator.onWelcomeFinished")
-            onFinishedWelcome()
-        })
+        Router($viewModel.routes) { screen, _ in
+            switch screen {
+            case .authentication:
+                AuthenticationCoordinator()
+            case .countrySelection:
+                CountrySelectionView()
+            case .dataPrivacy:
+                DataPrivacyView()
+            case .welcome:
+                WelcomeScreen(
+                    viewModel: .init(
+                        onRegister: viewModel.onRegister,
+                        onLogin: viewModel.onLogin,
+                        onWelcomeFinished: viewModel.onFinish
+                    )
+                )
+            }
+        }
     }
 }

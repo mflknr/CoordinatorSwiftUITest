@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct DataPrivacyCoordinator: Coordinator {
+struct DataPrivacyView: View {
 
     var body: some View {
-        Text("Test")
+        Text("DataPrivacyView")
+            .padding()
     }
 }

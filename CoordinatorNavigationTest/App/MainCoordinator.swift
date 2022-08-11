@@ -18,7 +18,7 @@ struct MainCoordinator: Coordinator {
             case .tab:
                 TabCoordinator(viewModel: .init())
             case .welcome:
-                WelcomeCoordinator(onFinishedWelcome: viewModel.onFinishedWelcome)
+                WelcomeCoordinator(viewModel: .init(onFinishedWelcome: viewModel.onFinishedWelcome))
             }
         }
     }

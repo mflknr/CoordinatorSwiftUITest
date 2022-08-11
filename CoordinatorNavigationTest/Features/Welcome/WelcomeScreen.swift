@@ -9,18 +9,17 @@ import SwiftUI
 
 struct WelcomeScreen: View {
 
-    private let onWelcomeFinished: () -> Void
-
-    init(onWelcomeFinished: @escaping () -> Void) {
-        self.onWelcomeFinished = onWelcomeFinished
-    }
+    @ObservedObject var viewModel: WelcomeScreen.ViewModel
 
     var body: some View {
         ScrollView {
-            Text("WelcomeScreen")
-                .padding()
-            Button("Resolve welcome") {
-                onWelcomeFinished()
+            VStack(spacing: 16.0) {
+                Text("WelcomeScreen")
+                    .padding()
+
+                Button("Register", action: viewModel.onRegisterButtonTap)
+                Button("Login", action: viewModel.onLoginButtonTap)
+                Button("Continue as Guest", action: viewModel.onContinueAsGuest)
             }
         }
     }
@@ -28,6 +27,12 @@ struct WelcomeScreen: View {
 
 struct WelcomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeScreen(onWelcomeFinished: {})
+        WelcomeScreen(
+            viewModel: .init(
+                onRegister: {},
+                onLogin: {},
+                onWelcomeFinished: {}
+            )
+        )
     }
 }

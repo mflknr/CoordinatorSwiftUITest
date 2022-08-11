@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WebCoordinator: Coordinator {
     var body: some View {
-        Text("Test")
+        Text("WebCoordinator")
             .padding()
     }
 }

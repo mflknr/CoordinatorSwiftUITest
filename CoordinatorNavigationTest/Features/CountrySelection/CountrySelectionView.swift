@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct CountrySelectionCoordinator: Coordinator {
+struct CountrySelectionView: View {
     var body: some View {
-        Text("Test")
+        Text("CountrySelectionView")
+            .padding()
     }
 }
