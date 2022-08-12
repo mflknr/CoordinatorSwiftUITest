@@ -9,23 +9,20 @@ import SwiftUI
 
 struct StartDetailsScreen: View {
 
-    @ObservedObject var viewModel: StartDetailsScreen.ViewModel
+    @ObservedObject var viewModel: StartDetailsScreenViewModel
 
     var body: some View {
-        ScrollView {
-            Text("Content für die StartDetails")
-                .padding()
+        List {
+            Section {
+                ForEach(viewModel.state.chapters, id: \.self) { chapter in
+                    Text(chapter)
+                }
+            } header: {
+                Text(viewModel.state.headerText)
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(viewModel.navigationTitle)
-    }
-}
-
-extension StartDetailsScreen {
-    class ViewModel: BaseViewModel {
-        let navigationTitle: String
-        init() {
-            self.navigationTitle = ""
-        }
+        .navigationTitle(viewModel.state.navigationTitle)
+        .onWillAppear { viewModel.onIntent(.willAppear) }
     }
 }

@@ -36,22 +36,23 @@ class OneApiRepository {
         remoteDataSource
             .fetchBooks()
             .sink { completion in
-                print(completion)
+//                print(completion)
             } receiveValue: { [weak self] dataModel in
                 self?.localDataSource.save(dataModel)
             }
             .store(in: &cancellables)
     }
     
-    func fetchChapter(by id: String) {
+    func fetchChapters(by id: String) {
         remoteDataSource
             .fetchChapters(by: id)
             .sink(
                 receiveCompletion: { completion in
-                    print(completion)
+//                    print(completion)
                 },
                 receiveValue: { [weak self] dataModel in
-                    self?.localDataSource.save(dataModel)
+                    let chapters = dataModel.docs.map { $0.chapterName }.compactMap { $0 }
+                    self?.localDataSource.save(chapters)
                 }
             )
             .store(in: &cancellables)

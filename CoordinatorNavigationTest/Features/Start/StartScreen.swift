@@ -9,23 +9,26 @@ import SwiftUI
 
 struct StartScreen: View {
 
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: StartScreenViewModel
 
     var body: some View {
         Form {
             Section {
-                Text(viewModel.detailsButtonText)
-                Text(viewModel.whatsNewButtonText)
+                Text(viewModel.state.detailsButtonText)
+                Text(viewModel.state.whatsNewButtonText)
+                    .onTapGesture {
+                        viewModel.onIntent(.whatsNewTap)
+                    }
 
             } header: {
                 Text("Deine Möglichkeiten heute")
             }
 
             Section {
-                ForEach(viewModel.books) { book in
+                ForEach(viewModel.state.books) { book in
                     Text(book.name)
                         .onTapGesture {
-                            viewModel.onDetailsTap(book)
+                            viewModel.onIntent(.detailsTap(book))
                         }
                 }
             } header: {
@@ -34,18 +37,26 @@ struct StartScreen: View {
 
             Section {
                 Button("Reset Welcome") {
-                    UserDefaults.standard.removeObject(forKey: "kUserFinishedWelcome")
+                    viewModel.onIntent(.resetTap)
                 }
+            } header: {
+                Text("Helper")
             }
         }
         .navigationBarTitleDisplayMode(.large)
-        .navigationTitle(viewModel.navTitle)
-        .onAppear(perform: viewModel.onAppear)
+        .navigationTitle(viewModel.state.navTitle)
+        .onWillAppear(perform: viewModel.onViewWillAppear)
     }
 }
 
 struct StartScreen_Previews: PreviewProvider {
     static var previews: some View {
-        StartScreen(viewModel: .init(onNavigationIntent: {_ in}))
+        StartScreen(
+            viewModel: .init(
+                initialState: .init(
+                    onNavigationIntent: {_ in}
+                )
+            )
+        )
     }
 }
