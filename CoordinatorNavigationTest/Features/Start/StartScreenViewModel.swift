@@ -36,8 +36,8 @@ class StartScreenViewModel: MviViewModel<StartScreenIntent, StartScreenState> {
         switch intent {
         case .detailsTap(let book):
             state.onNavigationIntent(.openDetails(book))
-        case .whatsNewTap:
-            self.state = state.reduce(.whatsNew)
+        case .toggle(let isOn):
+            state.reduce(.toggle(isOn))
         case .resetTap:
             UserDefaults.standard.removeObject(forKey: "kUserFinishedWelcome")
         }
@@ -47,9 +47,4 @@ class StartScreenViewModel: MviViewModel<StartScreenIntent, StartScreenState> {
         print("StartScreen.ViewModel.onAppear")
         repository.fetchBooks()
     }
-}
-
-protocol Reducable {
-    associatedtype PartialState
-    func reduce(_ partialState: PartialState) -> Self
 }

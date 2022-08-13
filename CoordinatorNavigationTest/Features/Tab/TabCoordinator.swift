@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabCoordinator: Coordinator {
 
-    @ObservedObject var viewModel: TabCoordinator.ViewModel
+    @ObservedObject var viewModel: TabCoordinatorViewModel
 
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {

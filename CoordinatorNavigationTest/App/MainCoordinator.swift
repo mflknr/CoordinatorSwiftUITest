@@ -10,7 +10,7 @@ import FlowStacks
 
 struct MainCoordinator: Coordinator {
 
-    @ObservedObject var viewModel: MainCoordinator.ViewModel
+    @ObservedObject var viewModel: MainCoordinatorViewModel
 
     var body: some View {
         Router($viewModel.routes) { coordinator, _ in

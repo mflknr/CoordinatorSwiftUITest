@@ -16,10 +16,6 @@ struct StartScreen: View {
             Section {
                 Text(viewModel.state.detailsButtonText)
                 Text(viewModel.state.whatsNewButtonText)
-                    .onTapGesture {
-                        viewModel.onIntent(.whatsNewTap)
-                    }
-
             } header: {
                 Text("Deine Möglichkeiten heute")
             }
@@ -36,6 +32,9 @@ struct StartScreen: View {
             }
 
             Section {
+                CustomToggle(title: "Custom Toggle for intents") { isOn in
+                    viewModel.onIntent(.toggle(isOn))
+                }
                 Button("Reset Welcome") {
                     viewModel.onIntent(.resetTap)
                 }
