@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum StartNavigationIntent {
+enum StartCoordinatorIntent {
     case triggerWhatsNew
     case openDetails(Book)
 }

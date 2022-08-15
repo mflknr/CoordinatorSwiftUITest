@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct CoordinatorNavigationTestApp: App {
+
+    @StateObject private var viewModel = MainCoordinatorViewModel()
+
     var body: some Scene {
         WindowGroup {
-            MainCoordinator(viewModel: .init())
+            MainCoordinator(viewModel: viewModel)
+                .onOpenURL { url in
+                    viewModel.onOpenUrl(url)
+                }
         }
     }
 }

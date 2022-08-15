@@ -26,7 +26,7 @@ class StartScreenViewModel: MviViewModel<StartScreenIntent, StartScreenState> {
                         .docs
                         .map { Book(name: $0.name ?? "", bookId: $0.id) }
                         .compactMap { $0 }
-                    self.state = self.state.reduce(.loaded(books))
+                    self.onIntent(.finishedLoading(books))
                 }
             }
             .store(in: &cancellables)
@@ -34,12 +34,14 @@ class StartScreenViewModel: MviViewModel<StartScreenIntent, StartScreenState> {
 
     override func onIntent(_ intent: StartScreenIntent) {
         switch intent {
+        case .finishedLoading(let books):
+            state.reduce(.loaded(books))
         case .detailsTap(let book):
             state.onNavigationIntent(.openDetails(book))
         case .toggle(let isOn):
             state.reduce(.toggle(isOn))
         case .resetTap:
-            UserDefaults.standard.removeObject(forKey: "kUserFinishedWelcome")
+            UserDefaults.standard.set(nil, forKey: "kUserFinishedWelcome")
         }
     }
 

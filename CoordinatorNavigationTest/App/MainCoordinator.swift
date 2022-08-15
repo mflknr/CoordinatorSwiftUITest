@@ -15,10 +15,12 @@ struct MainCoordinator: Coordinator {
     var body: some View {
         Router($viewModel.routes) { coordinator, _ in
             switch coordinator {
-            case .tab:
-                TabCoordinator(viewModel: .init())
-            case .welcome:
-                WelcomeCoordinator(viewModel: .init(onFinishedWelcome: viewModel.onFinishedWelcome))
+            case .tab(let viewModel):
+                TabCoordinator(viewModel: viewModel)
+            case .welcome(let viewModel):
+                WelcomeCoordinator(
+                    viewModel: viewModel
+                )
             }
         }
     }

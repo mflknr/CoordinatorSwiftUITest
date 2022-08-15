@@ -1,3 +1,10 @@
+//
+//  MainCoordinator.swift
+//  CoordinatorNavigationTest
+//
+//  Created by Marius Felkner on 26.07.22.
+//
+
 // Inspired from here: https://stackoverflow.com/questions/64812770/swiftuis-onappear-and-ondisappear-called-multiple-times-and-inconsistently
 
 import SwiftUI

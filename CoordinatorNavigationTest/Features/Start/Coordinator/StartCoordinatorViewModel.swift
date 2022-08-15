@@ -8,46 +8,44 @@
 import SwiftUI
 import FlowStacks
 
-class StartCoordinatorViewModel: CoordinatorModel {
-    
+enum StartCoordinatorScreen {
+    case start(StartScreenViewModel)
+    case startDetails(StartDetailsScreenViewModel)
+}
 
-    enum Screen {
-        case start(StartScreenViewModel)
-        case startDetails(StartDetailsScreenViewModel)
-    }
+class StartCoordinatorViewModel: CoordinatorModel<StartCoordinatorIntent, StartCoordinatorScreen> {
 
-    @Published var routes: Routes<Screen> = []
-
-    private let onWhatsNewTriggered: () -> Void
+    private var onWhatsNewTriggered: () -> Void
 
     init(onWhatsNewTriggered: @escaping () -> Void) {
-        print("StartCoordinator.ViewModel.Init")
         self.onWhatsNewTriggered = onWhatsNewTriggered
-        self.routes = [
-            .root(
-                .start(
-                    .init(
-                        initialState: .init(
-                            onNavigationIntent: { intent in
-                                print("StartScreen.ViewModel.onIntent")
-                                self.onIntent(intent)
-                            }
+        super.init(
+            initialRoutes: [
+                .root(
+                    .start(
+                        .init(
+                            initialState: .init(
+                                onNavigationIntent: { _ in
+                                    // TODO: find out how to utilize self here
+//                                    self?.onIntent(intent)
+                                }
+                            )
                         )
-                    )
-                ),
-                embedInNavigationView: true
-            )
-        ]
+                    ),
+                    embedInNavigationView: true
+                )
+            ]
+        )
     }
 
-    func onIntent(_ intent: StartNavigationIntent) {
+    override func onIntent(_ intent: StartCoordinatorIntent) {
         print("StartCoordinator.ViewModel.onIntent: \(intent)")
         switch intent {
         case .triggerWhatsNew:
             onWhatsNewTriggered()
         case .openDetails(let book):
             routes.push(
-                .startDetails(.init(initialState: .init(book: book)))
+                .startDetails(.init(initialState: .init(navigationTitle: book.name, book: book)))
             )
         }
     }

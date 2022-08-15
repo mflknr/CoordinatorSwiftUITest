@@ -13,12 +13,24 @@ enum Tab: Int {
     case settings
 }
 
-class TabCoordinatorViewModel: CoordinatorModel {
-    enum Screen {
-        case tab
-        case authentication
-        case web
+enum TabCoordinatorScreen {
+    case tab
+    case authentication
+    case web
+}
+
+enum TabCoordinatorIntent {}
+
+class TabCoordinatorViewModel: CoordinatorModel<TabCoordinatorIntent, TabCoordinatorScreen> {
+
+    @Published var selectedTab: Tab
+
+    init() {
+        self.selectedTab = .start
+        super.init(initialRoutes: [.root(.tab)])
     }
 
-    @State var selectedTab: Tab = .start
+    override func onIntent(_ intent: TabCoordinatorIntent) {
+        // do nothing
+    }
 }

@@ -9,5 +9,5 @@ import Foundation
 
 protocol Reducable {
     associatedtype PartialState
-    mutating func reduce(_ partialState: PartialState) -> Self
+    mutating func reduce(_ partialState: PartialState)
 }

@@ -8,9 +8,9 @@ struct StartScreenState: Reducable {
     private(set) var navTitle: String = "Start"
     private(set) var books: [Book] = []
     private(set) var isActivated: Bool = false
-    private(set) var onNavigationIntent: (StartNavigationIntent) -> Void
+    private(set) var onNavigationIntent: (StartCoordinatorIntent) -> Void
 
-    mutating func reduce(_ partialState: PartialState) -> StartScreenState {
+    mutating func reduce(_ partialState: PartialState) {
         switch partialState {
         case .isLoading:
             isLoading = true
@@ -34,8 +34,6 @@ struct StartScreenState: Reducable {
                 navTitle = "Start"
             }
         }
-
-        return self
     }
 }
 

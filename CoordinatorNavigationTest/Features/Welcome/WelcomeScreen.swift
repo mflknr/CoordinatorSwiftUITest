@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WelcomeScreen: View {
 
-    @ObservedObject var viewModel: WelcomeScreen.ViewModel
+    @ObservedObject var viewModel: WelcomeScreenViewModel
 
     var body: some View {
         ScrollView {

@@ -8,13 +8,19 @@
 import SwiftUI
 import FlowStacks
 
-class MainCoordinatorViewModel: CoordinatorModel {
-    enum Screen {
-        case tab
-        case welcome
-    }
+enum MainCoordinatorIntent {
+    case firstStart
+    case showTab
+    case showWelcome
+    case finishedWelcome
+}
 
-    @Published var routes: Routes<Screen> = []
+enum MainCoordinatorScreen {
+    case tab(TabCoordinatorViewModel)
+    case welcome(WelcomeCoordinatorViewModel)
+}
+
+class MainCoordinatorViewModel: CoordinatorModel<MainCoordinatorIntent, MainCoordinatorScreen> {
 
     private let kUserFinishedWelcome = "kUserFinishedWelcome"
     private var userFinishedWelcome: Bool {
@@ -28,25 +34,49 @@ class MainCoordinatorViewModel: CoordinatorModel {
     }
 
     init() {
-        print("MainCoordinator.ViewModel.init")
-        if userFinishedWelcome {
-            showTabAsRoot()
-        } else {
-            routes = [
-                .root(.welcome)
-            ]
-        }
-
+        super.init(initialRoutes: [])
+        onIntent(.firstStart)
     }
 
-    func onFinishedWelcome() {
-        userFinishedWelcome = true
-        showTabAsRoot()
+    override func onIntent(_ intent: MainCoordinatorIntent) {
+        switch intent {
+        case .firstStart:
+            if userFinishedWelcome {
+                showTabAsRoot()
+            } else {
+                routes = [
+                    .root(
+                        .welcome(
+                            .init(
+                                onFinishedWelcome: { self.onIntent(.finishedWelcome) }
+                            )
+                        )
+                    )
+                ]
+            }
+        case .showTab:
+            showTabAsRoot()
+        case .showWelcome:
+            routes = [
+                .root(
+                    .welcome(
+                        .init(
+                            onFinishedWelcome: { self.onIntent(.finishedWelcome) }
+                        )
+                    )
+                )
+            ]
+        case .finishedWelcome:
+            userFinishedWelcome = true
+            showTabAsRoot()
+        }
+    }
+
+    func onOpenUrl(_ url: URL) {
+        print("MainCoordinatorViewModel.onOpenUrl: \(url)")
     }
 
     private func showTabAsRoot() {
-        routes = [
-            .root(.tab)
-        ]
+        routes = [.root(.tab(.init()))]
     }
 }

@@ -10,7 +10,7 @@ import FlowStacks
 
 struct WelcomeCoordinator: Coordinator {
 
-    @ObservedObject var viewModel: WelcomeCoordinator.ViewModel
+    @ObservedObject var viewModel: WelcomeCoordinatorViewModel
 
     var body: some View {
         Router($viewModel.routes) { screen, _ in
@@ -24,12 +24,15 @@ struct WelcomeCoordinator: Coordinator {
             case .welcome:
                 WelcomeScreen(
                     viewModel: .init(
-                        onRegister: viewModel.onRegister,
-                        onLogin: viewModel.onLogin,
-                        onWelcomeFinished: viewModel.onFinish
+                        onRegister: { viewModel.onIntent(.register) },
+                        onLogin: { viewModel.onIntent(.login) },
+                        onWelcomeFinished: { viewModel.onIntent(.finish) }
                     )
                 )
             }
+        }
+        .onAppear {
+            viewModel.onIntent(.dataPrivacy)
         }
     }
 }

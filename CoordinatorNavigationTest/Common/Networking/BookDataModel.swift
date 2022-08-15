@@ -1,10 +1,10 @@
 //
+//  MainCoordinator.swift
+//  CoordinatorNavigationTest
 //
-// Created by __FULLUSERNAME__ on __DATE__.
-// 
+//  Created by Marius Felkner on 26.07.22.
 //
 	
-
 import Foundation
 
 struct BookDataModel: Codable {

@@ -1,43 +1,21 @@
 import Foundation
 
 struct StartDetailsScreenState: Reducable {
-    let navigationTitle: String
-    let headerText: String = "Chapter"
-    let book: Book
-    let isLoading: Bool
-    var chapters: [String]
+    private(set) var navigationTitle: String
+    private(set) var headerText: String = "Chapter"
+    private(set) var book: Book
+    private(set) var isLoading: Bool = false
+    private(set) var chapters: [String] = []
 
-    init(
-        book: Book,
-        isLoading: Bool = false,
-        chapters: [String] = []
-    ) {
-        self.navigationTitle = book.name
-        self.book = book
-        self.isLoading = isLoading
-        self.chapters = chapters
-    }
-
-    func reduce(_ partialState: PartialState) -> StartDetailsScreenState {
+    mutating func reduce(_ partialState: PartialState) {
         switch partialState {
         case .isLoading:
-            return .init(
-                book: book,
-                isLoading: true,
-                chapters: chapters
-            )
+            isLoading = true
         case .error:
-            return .init(
-                book: book,
-                isLoading: false,
-                chapters: chapters
-            )
-        case .loaded(let chapters):
-            return .init(
-                book: book,
-                isLoading: false,
-                chapters: chapters
-            )
+            isLoading = false
+        case .loaded(let newChapters):
+            isLoading = false
+            chapters = newChapters
         }
     }
 }

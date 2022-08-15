@@ -12,7 +12,7 @@ class StartDetailsScreenViewModel: MviViewModel<StartDetailsScreenIntent, StartD
                 print(completion)
             } receiveValue: { [weak self] chapters in
                 guard let self = self, let chapters = chapters else { return }
-                self.state = self.state.reduce(.loaded(chapters))
+                self.state.reduce(.loaded(chapters))
             }
             .store(in: &cancellables)
 
@@ -21,7 +21,7 @@ class StartDetailsScreenViewModel: MviViewModel<StartDetailsScreenIntent, StartD
     override func onIntent(_ intent: StartDetailsScreenIntent) {
         switch intent {
         case .willAppear:
-            self.state = self.state.reduce(.isLoading)
+            self.state.reduce(.isLoading)
             repository.fetchChapters(by: state.book.bookId)
         }
     }

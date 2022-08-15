@@ -9,20 +9,20 @@
 /* Begin PBXBuildFile section */
 		7748E1BE28A1B77800EF7EB5 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1BD28A1B77800EF7EB5 /* AuthenticationCoordinator.swift */; };
 		7748E1C028A1B85300EF7EB5 /* DataPrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1BF28A1B85300EF7EB5 /* DataPrivacyView.swift */; };
-		7748E1C228A1B88300EF7EB5 /* WelcomeCoordinator+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1C128A1B88300EF7EB5 /* WelcomeCoordinator+ViewModel.swift */; };
+		7748E1C228A1B88300EF7EB5 /* WelcomeCoordinatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1C128A1B88300EF7EB5 /* WelcomeCoordinatorViewModel.swift */; };
 		7748E1C528A1B9B800EF7EB5 /* CountrySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1C428A1B9B800EF7EB5 /* CountrySelectionView.swift */; };
-		7748E1C828A1B9F300EF7EB5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1C728A1B9F300EF7EB5 /* BaseViewModel.swift */; };
 		7748E1CB28A1BBEE00EF7EB5 /* WebCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1CA28A1BBEE00EF7EB5 /* WebCoordinator.swift */; };
 		7748E1CD28A1BC5C00EF7EB5 /* CoordinatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1CC28A1BC5C00EF7EB5 /* CoordinatorModel.swift */; };
 		7748E1CF28A6F64200EF7EB5 /* Reducable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1CE28A6F64200EF7EB5 /* Reducable.swift */; };
 		7748E1D428A850AD00EF7EB5 /* CustomToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7748E1D328A850AD00EF7EB5 /* CustomToggle.swift */; };
-		7765B05E28A532050061D400 /* WelcomeScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B05D28A532050061D400 /* WelcomeScreen+ViewModel.swift */; };
+		7765B05E28A532050061D400 /* WelcomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B05D28A532050061D400 /* WelcomeScreenViewModel.swift */; };
 		7765B06128A535060061D400 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06028A535060061D400 /* Client.swift */; };
 		7765B06328A538770061D400 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06228A538770061D400 /* Endpoint.swift */; };
 		7765B06628A53B9B0061D400 /* OneApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06528A53B9B0061D400 /* OneApiRepository.swift */; };
 		7765B06828A53C220061D400 /* OneApiLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06728A53C220061D400 /* OneApiLocalDataSource.swift */; };
 		7765B06A28A53C390061D400 /* OneApiRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06928A53C390061D400 /* OneApiRemoteDataSource.swift */; };
 		7765B06C28A54B830061D400 /* BookDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7765B06B28A54B830061D400 /* BookDataModel.swift */; };
+		7784F6CC28A9743200C1F488 /* CustomDump in Frameworks */ = {isa = PBXBuildFile; productRef = 7784F6CB28A9743200C1F488 /* CustomDump */; };
 		77AC5543289F14A300EB8DC4 /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 77AC5542289F14A300EB8DC4 /* FlowStacks */; };
 		77AC5545289F1C6500EB8DC4 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AC5544289F1C6500EB8DC4 /* TabCoordinator.swift */; };
 		77AC5547289F1C9900EB8DC4 /* MainCoordinatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AC5546289F1C9900EB8DC4 /* MainCoordinatorViewModel.swift */; };
@@ -36,7 +36,7 @@
 		77DC9B3B28A6A40E0080AE61 /* StartDetailsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC9B3A28A6A40E0080AE61 /* StartDetailsScreenViewModel.swift */; };
 		77DC9B3D28A6A4150080AE61 /* StartDetailsScreenIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC9B3C28A6A4150080AE61 /* StartDetailsScreenIntent.swift */; };
 		77DC9B3F28A6A41D0080AE61 /* StartDetailsScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC9B3E28A6A41D0080AE61 /* StartDetailsScreenState.swift */; };
-		77DC9B4228A6A8B40080AE61 /* StartNavigationIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC9B4128A6A8B40080AE61 /* StartNavigationIntent.swift */; };
+		77DC9B4228A6A8B40080AE61 /* StartCoordinatorIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC9B4128A6A8B40080AE61 /* StartCoordinatorIntent.swift */; };
 		77E913DD288F98360078C72D /* CoordinatorNavigationTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E913DC288F98360078C72D /* CoordinatorNavigationTestApp.swift */; };
 		77E913DF288F98360078C72D /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E913DE288F98360078C72D /* SettingsScreen.swift */; };
 		77E913E1288F98380078C72D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77E913E0288F98380078C72D /* Assets.xcassets */; };
@@ -56,14 +56,13 @@
 /* Begin PBXFileReference section */
 		7748E1BD28A1B77800EF7EB5 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		7748E1BF28A1B85300EF7EB5 /* DataPrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPrivacyView.swift; sourceTree = "<group>"; };
-		7748E1C128A1B88300EF7EB5 /* WelcomeCoordinator+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WelcomeCoordinator+ViewModel.swift"; sourceTree = "<group>"; };
+		7748E1C128A1B88300EF7EB5 /* WelcomeCoordinatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinatorViewModel.swift; sourceTree = "<group>"; };
 		7748E1C428A1B9B800EF7EB5 /* CountrySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectionView.swift; sourceTree = "<group>"; };
-		7748E1C728A1B9F300EF7EB5 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		7748E1CA28A1BBEE00EF7EB5 /* WebCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCoordinator.swift; sourceTree = "<group>"; };
 		7748E1CC28A1BC5C00EF7EB5 /* CoordinatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorModel.swift; sourceTree = "<group>"; };
 		7748E1CE28A6F64200EF7EB5 /* Reducable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducable.swift; sourceTree = "<group>"; };
 		7748E1D328A850AD00EF7EB5 /* CustomToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggle.swift; sourceTree = "<group>"; };
-		7765B05D28A532050061D400 /* WelcomeScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WelcomeScreen+ViewModel.swift"; sourceTree = "<group>"; };
+		7765B05D28A532050061D400 /* WelcomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewModel.swift; sourceTree = "<group>"; };
 		7765B06028A535060061D400 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		7765B06228A538770061D400 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		7765B06528A53B9B0061D400 /* OneApiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneApiRepository.swift; sourceTree = "<group>"; };
@@ -82,7 +81,7 @@
 		77DC9B3A28A6A40E0080AE61 /* StartDetailsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDetailsScreenViewModel.swift; sourceTree = "<group>"; };
 		77DC9B3C28A6A4150080AE61 /* StartDetailsScreenIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDetailsScreenIntent.swift; sourceTree = "<group>"; };
 		77DC9B3E28A6A41D0080AE61 /* StartDetailsScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDetailsScreenState.swift; sourceTree = "<group>"; };
-		77DC9B4128A6A8B40080AE61 /* StartNavigationIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartNavigationIntent.swift; sourceTree = "<group>"; };
+		77DC9B4128A6A8B40080AE61 /* StartCoordinatorIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinatorIntent.swift; sourceTree = "<group>"; };
 		77E913D9288F98360078C72D /* CoordinatorNavigationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorNavigationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E913DC288F98360078C72D /* CoordinatorNavigationTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorNavigationTestApp.swift; sourceTree = "<group>"; };
 		77E913DE288F98360078C72D /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
@@ -106,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77AC5543289F14A300EB8DC4 /* FlowStacks in Frameworks */,
+				7784F6CC28A9743200C1F488 /* CustomDump in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +123,6 @@
 		7748E1C628A1B9DB00EF7EB5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7748E1C728A1B9F300EF7EB5 /* BaseViewModel.swift */,
 				7748E1CC28A1BC5C00EF7EB5 /* CoordinatorModel.swift */,
 				77DC9B3028A648AB0080AE61 /* MviViewModel.swift */,
 				7748E1CE28A6F64200EF7EB5 /* Reducable.swift */,
@@ -209,7 +208,7 @@
 			children = (
 				77E913F9288F99450078C72D /* StartCoordinator.swift */,
 				77E913FF2890FBFB0078C72D /* StartCoordinatorViewModel.swift */,
-				77DC9B4128A6A8B40080AE61 /* StartNavigationIntent.swift */,
+				77DC9B4128A6A8B40080AE61 /* StartCoordinatorIntent.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -314,9 +313,9 @@
 			isa = PBXGroup;
 			children = (
 				77E913F7288F993B0078C72D /* WelcomeCoordinator.swift */,
-				7748E1C128A1B88300EF7EB5 /* WelcomeCoordinator+ViewModel.swift */,
+				7748E1C128A1B88300EF7EB5 /* WelcomeCoordinatorViewModel.swift */,
 				77E913FB288F99B20078C72D /* WelcomeScreen.swift */,
-				7765B05D28A532050061D400 /* WelcomeScreen+ViewModel.swift */,
+				7765B05D28A532050061D400 /* WelcomeScreenViewModel.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -356,6 +355,7 @@
 			name = CoordinatorNavigationTest;
 			packageProductDependencies = (
 				77AC5542289F14A300EB8DC4 /* FlowStacks */,
+				7784F6CB28A9743200C1F488 /* CustomDump */,
 			);
 			productName = CoordinatorNavigationTest;
 			productReference = 77E913D9288F98360078C72D /* CoordinatorNavigationTest.app */;
@@ -387,6 +387,7 @@
 			mainGroup = 77E913D0288F98360078C72D;
 			packageReferences = (
 				77AC5541289F14A300EB8DC4 /* XCRemoteSwiftPackageReference "FlowStacks" */,
+				7784F6CA28A9743200C1F488 /* XCRemoteSwiftPackageReference "swift-custom-dump" */,
 			);
 			productRefGroup = 77E913DA288F98360078C72D /* Products */;
 			projectDirPath = "";
@@ -428,12 +429,12 @@
 				77E913F0288F98AF0078C72D /* Coordinator.swift in Sources */,
 				77E914022890FC210078C72D /* StartScreenViewModel.swift in Sources */,
 				77E913DF288F98360078C72D /* SettingsScreen.swift in Sources */,
-				7748E1C228A1B88300EF7EB5 /* WelcomeCoordinator+ViewModel.swift in Sources */,
+				7748E1C228A1B88300EF7EB5 /* WelcomeCoordinatorViewModel.swift in Sources */,
 				77DC9B3D28A6A4150080AE61 /* StartDetailsScreenIntent.swift in Sources */,
 				7748E1D428A850AD00EF7EB5 /* CustomToggle.swift in Sources */,
 				77DC9B3128A648AB0080AE61 /* MviViewModel.swift in Sources */,
 				7748E1C528A1B9B800EF7EB5 /* CountrySelectionView.swift in Sources */,
-				7765B05E28A532050061D400 /* WelcomeScreen+ViewModel.swift in Sources */,
+				7765B05E28A532050061D400 /* WelcomeScreenViewModel.swift in Sources */,
 				77DC9B3F28A6A41D0080AE61 /* StartDetailsScreenState.swift in Sources */,
 				7765B06A28A53C390061D400 /* OneApiRemoteDataSource.swift in Sources */,
 				77E913EC288F98760078C72D /* MainCoordinator.swift in Sources */,
@@ -443,14 +444,13 @@
 				7748E1CF28A6F64200EF7EB5 /* Reducable.swift in Sources */,
 				7765B06328A538770061D400 /* Endpoint.swift in Sources */,
 				77DC9B3928A6A0F00080AE61 /* Book.swift in Sources */,
-				7748E1C828A1B9F300EF7EB5 /* BaseViewModel.swift in Sources */,
 				77E913FE288F99C30078C72D /* StartScreen.swift in Sources */,
 				77AC554F289FECA700EB8DC4 /* TabCoordinatorViewModel.swift in Sources */,
 				77E914002890FBFB0078C72D /* StartCoordinatorViewModel.swift in Sources */,
 				77E913DD288F98360078C72D /* CoordinatorNavigationTestApp.swift in Sources */,
 				77DC9B3528A6A02F0080AE61 /* StartScreenState.swift in Sources */,
 				77E913FA288F99450078C72D /* StartCoordinator.swift in Sources */,
-				77DC9B4228A6A8B40080AE61 /* StartNavigationIntent.swift in Sources */,
+				77DC9B4228A6A8B40080AE61 /* StartCoordinatorIntent.swift in Sources */,
 				77DC9B3328A665170080AE61 /* ViewModifier+OnViewWillAppear.swift in Sources */,
 				7748E1CB28A1BBEE00EF7EB5 /* WebCoordinator.swift in Sources */,
 				77E913F8288F993B0078C72D /* WelcomeCoordinator.swift in Sources */,
@@ -655,6 +655,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7784F6CA28A9743200C1F488 /* XCRemoteSwiftPackageReference "swift-custom-dump" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-custom-dump.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 		77AC5541289F14A300EB8DC4 /* XCRemoteSwiftPackageReference "FlowStacks" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/johnpatrickmorgan/FlowStacks";
@@ -666,6 +674,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7784F6CB28A9743200C1F488 /* CustomDump */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7784F6CA28A9743200C1F488 /* XCRemoteSwiftPackageReference "swift-custom-dump" */;
+			productName = CustomDump;
+		};
 		77AC5542289F14A300EB8DC4 /* FlowStacks */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 77AC5541289F14A300EB8DC4 /* XCRemoteSwiftPackageReference "FlowStacks" */;
