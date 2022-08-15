@@ -15,7 +15,7 @@ protocol Routable {
     var routes: Routes<Screen> { get }
 }
 
-class CoordinatorModel<Intent, Screen>: ObservableObject, Routable {
+class CoordinatorModel<Intent, Screen>: ObservableObject, Routable, Intentable {
 
     @Published var routes: Routes<Screen>
     private var oldRoutes: Routes<Screen>?
@@ -23,7 +23,14 @@ class CoordinatorModel<Intent, Screen>: ObservableObject, Routable {
 
     init(initialRoutes: Routes<Screen> = []) {
         self.routes = initialRoutes
-        self.oldRoutes = initialRoutes
+        logRouteChanges()
+    }
+
+    func onIntent(_ intent: Intent) {
+        fatalError("Missin override")
+    }
+
+    private func logRouteChanges() {
         $routes
             .handleEvents(
                 receiveOutput: { [weak self] newRoutes in
@@ -38,9 +45,5 @@ class CoordinatorModel<Intent, Screen>: ObservableObject, Routable {
             )
             .sink { _ in return }
             .store(in: &cancellable)
-    }
-
-    func onIntent(_ intent: Intent) {
-        fatalError("override missing")
     }
 }

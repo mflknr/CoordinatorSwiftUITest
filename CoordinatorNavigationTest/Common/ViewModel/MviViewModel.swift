@@ -63,21 +63,32 @@ protocol Intentable {
 class MviViewModel<Intent, State>: StatePublishingObject, Intentable {
 
     @Published var state: State
-    private var oldState: State
+    private var oldState: State?
 
     var cancellables = Set<AnyCancellable>()
 
     init(initialState: State) {
         self.state = initialState
-        self.oldState = initialState
+        logStateChanges()
+    }
+
+    func initialize() {
+        fatalError("Missing Override")
+    }
+
+    func onIntent(_ intent: Intent) {
+        fatalError("Missing Override")
+    }
+
+    private func logStateChanges() {
         $state
             .handleEvents(
-                receiveOutput: { [weak self] state in
+                receiveOutput: { [weak self] newState in
                     guard let self = self else { return }
-                    if let diff = diff(self.oldState, state) {
+                    if let diff = diff(self.oldState, newState) {
                         print("** NEW STATE **")
                         print(diff)
-                        self.oldState = state
+                        self.oldState = newState
                     }
                 },
                 receiveRequest: { [weak self] _ in
@@ -88,13 +99,5 @@ class MviViewModel<Intent, State>: StatePublishingObject, Intentable {
             )
             .sink(receiveValue: { _ in return })
             .store(in: &cancellables)
-    }
-
-    func initialize() {
-        fatalError("Missing Override")
-    }
-
-    func onIntent(_ intent: Intent) {
-        fatalError("Missing Override")
     }
 }
