@@ -13,12 +13,12 @@ class StartScreenViewModel: MviViewModel<StartScreenIntent, StartScreenState> {
     private var repository = OneApiRepository()
 
     override func initialize() {
-        print("Start Subscription")
+        repository.fetchBooks()
         repository
             .getBooks()
             .receive(on: RunLoop.main)
-            .sink { _ in
-                //
+            .sink { completion in
+                print("StartScreenViewModel.getBooks() completion: \(completion)")
             } receiveValue: { [weak self] bookDataModel in
                 guard let self = self else { return }
                 if let model = bookDataModel {
@@ -26,7 +26,7 @@ class StartScreenViewModel: MviViewModel<StartScreenIntent, StartScreenState> {
                         .docs
                         .map { Book(name: $0.name ?? "", bookId: $0.id) }
                         .compactMap { $0 }
-                    self.onIntent(.finishedLoading(books))
+                    self.state = self.state.reduce(.loaded(books))
                 }
             }
             .store(in: &cancellables)
@@ -34,19 +34,16 @@ class StartScreenViewModel: MviViewModel<StartScreenIntent, StartScreenState> {
 
     override func onIntent(_ intent: StartScreenIntent) {
         switch intent {
-        case .finishedLoading(let books):
-            state.reduce(.loaded(books))
-        case .detailsTap(let book):
+        case .showAuth:
+            state.onNavigationIntent(.openAuth)
+        case .showWeb:
+            state.onNavigationIntent(.openWeb)
+        case .showDetails(let book):
             state.onNavigationIntent(.openDetails(book))
         case .toggle(let isOn):
-            state.reduce(.toggle(isOn))
+            self.state = state.reduce(.toggle(isOn))
         case .resetTap:
             UserDefaults.standard.set(nil, forKey: "kUserFinishedWelcome")
         }
-    }
-
-    func onViewWillAppear() {
-        print("StartScreen.ViewModel.onAppear")
-        repository.fetchBooks()
     }
 }

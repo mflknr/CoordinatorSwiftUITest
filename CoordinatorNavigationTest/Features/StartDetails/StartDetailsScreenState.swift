@@ -1,4 +1,9 @@
-import Foundation
+//
+//  StartDetailsScreenState.swift
+//  CoordinatorNavigationTest
+//
+//  Created by Marius Felkner on 26.07.22.
+//
 
 struct StartDetailsScreenState: Reducable {
     private(set) var navigationTitle: String
@@ -7,16 +12,19 @@ struct StartDetailsScreenState: Reducable {
     private(set) var isLoading: Bool = false
     private(set) var chapters: [String] = []
 
-    mutating func reduce(_ partialState: PartialState) {
+    func reduce(_ partialState: PartialState) -> StartDetailsScreenState {
+        var newState = self
         switch partialState {
         case .isLoading:
-            isLoading = true
+            newState.isLoading = true
         case .error:
-            isLoading = false
+            newState.isLoading = false
         case .loaded(let newChapters):
-            isLoading = false
-            chapters = newChapters
+            newState.isLoading = false
+            newState.chapters = newChapters
         }
+
+        return newState
     }
 }
 

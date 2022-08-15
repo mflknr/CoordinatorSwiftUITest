@@ -19,11 +19,23 @@ enum TabCoordinatorScreen {
     case web
 }
 
-enum TabCoordinatorIntent {}
+enum TabCoordinatorIntent {
+    case showWeb
+    case showAuth
+}
 
 class TabCoordinatorViewModel: CoordinatorModel<TabCoordinatorIntent, TabCoordinatorScreen> {
 
     @Published var selectedTab: Tab
+
+    lazy var startCoordinatorViewModel: StartCoordinatorViewModel = .init(
+        onWebIntent: {
+            self.onIntent(.showWeb)
+        },
+        onAuthIntent: {
+            self.onIntent(.showAuth)
+        }
+    )
 
     init() {
         self.selectedTab = .start
@@ -31,6 +43,11 @@ class TabCoordinatorViewModel: CoordinatorModel<TabCoordinatorIntent, TabCoordin
     }
 
     override func onIntent(_ intent: TabCoordinatorIntent) {
-        // do nothing
+        switch intent {
+        case .showAuth:
+            routes.presentSheet(.authentication)
+        case .showWeb:
+            routes.presentSheet(.web)
+        }
     }
 }

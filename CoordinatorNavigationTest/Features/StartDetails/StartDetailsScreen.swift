@@ -23,6 +23,5 @@ struct StartDetailsScreen: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(viewModel.state.navigationTitle)
-        .onWillAppear { viewModel.onIntent(.willAppear) }
     }
 }

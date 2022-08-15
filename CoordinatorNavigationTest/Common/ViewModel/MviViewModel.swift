@@ -72,18 +72,21 @@ class MviViewModel<Intent, State>: StatePublishingObject, Intentable {
         self.oldState = initialState
         $state
             .handleEvents(
-                receiveSubscription: { [weak self] sub in
-                    print("Receiving subscription: \(sub.combineIdentifier) - Calling initialize")
-                    self?.initialize()
-                },
-                receiveOutput: { state in
+                receiveOutput: { [weak self] state in
+                    guard let self = self else { return }
                     if let diff = diff(self.oldState, state) {
+                        print("** NEW STATE **")
                         print(diff)
                         self.oldState = state
                     }
+                },
+                receiveRequest: { [weak self] _ in
+                    guard let self = self else { return }
+                    print("Received demand for \(type(of: self.state))")
+                    self.initialize()
                 }
             )
-            .sink(receiveValue: {_ in})
+            .sink(receiveValue: { _ in return })
             .store(in: &cancellables)
     }
 

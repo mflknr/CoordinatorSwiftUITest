@@ -24,7 +24,7 @@ struct StartScreen: View {
                 ForEach(viewModel.state.books) { book in
                     Text(book.name)
                         .onTapGesture {
-                            viewModel.onIntent(.detailsTap(book))
+                            viewModel.onIntent(.showDetails(book))
                         }
                 }
             } header: {
@@ -38,13 +38,18 @@ struct StartScreen: View {
                 Button("Reset Welcome") {
                     viewModel.onIntent(.resetTap)
                 }
+                Button("Show a WebView") {
+                    viewModel.onIntent(.showWeb)
+                }
+                Button("Show Authentication") {
+                    viewModel.onIntent(.showAuth)
+                }
             } header: {
                 Text("Helper")
             }
         }
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle(viewModel.state.navTitle)
-        .onWillAppear(perform: viewModel.onViewWillAppear)
     }
 }
 

@@ -1,3 +1,10 @@
+//
+//  StartScreenState.swift
+//  CoordinatorNavigationTest
+//
+//  Created by Marius Felkner on 27.07.22.
+//
+
 import Foundation
 
 struct StartScreenState: Reducable {
@@ -10,30 +17,35 @@ struct StartScreenState: Reducable {
     private(set) var isActivated: Bool = false
     private(set) var onNavigationIntent: (StartCoordinatorIntent) -> Void
 
-    mutating func reduce(_ partialState: PartialState) {
+    func reduce(_ partialState: PartialState) -> StartScreenState {
+        var newState = self
         switch partialState {
         case .isLoading:
-            isLoading = true
-            hasError = false
+            newState.isLoading = true
+            newState.hasError = false
 
         case .loaded(let books):
-            isLoading = false
-            hasError = false
-            self.books = books
+            newState.isLoading = false
+            newState.hasError = false
+            newState.books = books
+
         case .error:
-            isLoading = false
-            hasError = true
+            newState.isLoading = false
+            newState.hasError = true
+            
         case .toggle(let isOn):
             if isOn {
-                detailsButtonText = "Keine Details da :("
-                whatsNewButtonText = "Gibt es auch nicht mehr"
-                navTitle = "NOT HOME"
+                newState.detailsButtonText = "Keine Details da :("
+                newState.whatsNewButtonText = "Gibt es auch nicht mehr"
+                newState.navTitle = "NOT HOME"
             } else {
-                detailsButtonText = "Zu den Details"
-                whatsNewButtonText = "Öffne WhatsNew"
-                navTitle = "Start"
+                newState.detailsButtonText = "Zu den Details"
+                newState.whatsNewButtonText = "Öffne WhatsNew"
+                newState.navTitle = "Start"
             }
         }
+
+        return newState
     }
 }
 

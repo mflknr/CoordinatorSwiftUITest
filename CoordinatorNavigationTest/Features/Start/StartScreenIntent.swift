@@ -1,6 +1,14 @@
+//
+//  StartScreenIntent.swift
+//  CoordinatorNavigationTest
+//
+//  Created by Marius Felkner on 27.07.22.
+//
+
 enum StartScreenIntent {
-    case finishedLoading([Book])
-    case detailsTap(Book)
+    case showWeb
+    case showAuth
+    case showDetails(Book)
     case resetTap
     case toggle(Bool)
 }

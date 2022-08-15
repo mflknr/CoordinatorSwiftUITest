@@ -6,30 +6,35 @@
 //
 
 import SwiftUI
+import FlowStacks
 
 struct TabCoordinator: Coordinator {
 
     @ObservedObject var viewModel: TabCoordinatorViewModel
 
     var body: some View {
-        TabView(selection: $viewModel.selectedTab) {
-            StartCoordinator(
-                viewModel: .init(
-                    onWhatsNewTriggered: {
-                        print("StartCoordinator.ViewModel(onWhatsNewTriggered")
-                    }
-                )
-            )
-            .tabItem {
-                Label("Start", systemImage: "list.dash")
-            }
-            .tag(Tab.start)
+        Router($viewModel.routes) { coordinator, _ in
+            switch coordinator {
+            case .tab:
+                TabView(selection: $viewModel.selectedTab) {
+                    StartCoordinator(viewModel: viewModel.startCoordinatorViewModel)
+                        .tabItem {
+                            Label("Start", systemImage: "list.dash")
+                        }
+                        .tag(Tab.start)
 
-            SettingsCoordinator()
-                .tabItem {
-                    Label("Settings", systemImage: "square.and.pencil")
+                    SettingsCoordinator()
+                        .tabItem {
+                            Label("Settings", systemImage: "square.and.pencil")
+                        }
+                        .tag(Tab.settings)
                 }
-                .tag(Tab.settings)
+            case .web:
+                WebCoordinator()
+            case .authentication:
+                AuthenticationCoordinator()
+            }
         }
+
     }
 }

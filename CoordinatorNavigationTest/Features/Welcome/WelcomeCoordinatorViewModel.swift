@@ -27,7 +27,6 @@ class WelcomeCoordinatorViewModel: CoordinatorModel<WelcomeCoordinatorIntent, We
     private let onFinishedWelcome: () -> Void
 
     init(onFinishedWelcome: @escaping () -> Void) {
-        print("WelcomeCoordinator.ViewModel.init")
         self.onFinishedWelcome = onFinishedWelcome
         super.init(initialRoutes: [.root(.welcome)])
     }

@@ -15,34 +15,38 @@ enum StartCoordinatorScreen {
 
 class StartCoordinatorViewModel: CoordinatorModel<StartCoordinatorIntent, StartCoordinatorScreen> {
 
-    private var onWhatsNewTriggered: () -> Void
+    private var onWebIntent: () -> Void
+    private var onAuthIntent: () -> Void
 
-    init(onWhatsNewTriggered: @escaping () -> Void) {
-        self.onWhatsNewTriggered = onWhatsNewTriggered
-        super.init(
-            initialRoutes: [
-                .root(
-                    .start(
-                        .init(
-                            initialState: .init(
-                                onNavigationIntent: { _ in
-                                    // TODO: find out how to utilize self here
-//                                    self?.onIntent(intent)
-                                }
-                            )
+    init(
+        onWebIntent: @escaping () -> Void,
+        onAuthIntent: @escaping () -> Void
+    ) {
+        self.onWebIntent = onWebIntent
+        self.onAuthIntent = onAuthIntent
+        super.init()
+        self.routes = [
+            .root(
+                .start(
+                    .init(
+                        initialState: .init(
+                            onNavigationIntent: { [weak self] intent in
+                                self?.onIntent(intent)
+                            }
                         )
-                    ),
-                    embedInNavigationView: true
-                )
-            ]
-        )
+                    )
+                ),
+                embedInNavigationView: true
+            )
+        ]
     }
 
     override func onIntent(_ intent: StartCoordinatorIntent) {
-        print("StartCoordinator.ViewModel.onIntent: \(intent)")
         switch intent {
-        case .triggerWhatsNew:
-            onWhatsNewTriggered()
+        case .openAuth:
+            onAuthIntent()
+        case .openWeb:
+            onWebIntent()
         case .openDetails(let book):
             routes.push(
                 .startDetails(.init(initialState: .init(navigationTitle: book.name, book: book)))

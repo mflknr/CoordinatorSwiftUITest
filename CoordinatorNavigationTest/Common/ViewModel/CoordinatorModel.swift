@@ -5,6 +5,7 @@
 //  Created by Marius Felkner on 08.08.22.
 //
 
+import Foundation
 import Combine
 import FlowStacks
 import CustomDump
@@ -17,24 +18,25 @@ protocol Routable {
 class CoordinatorModel<Intent, Screen>: ObservableObject, Routable {
 
     @Published var routes: Routes<Screen>
-    private var oldRoutes: Routes<Screen>
+    private var oldRoutes: Routes<Screen>?
     private var cancellable = Set<AnyCancellable>()
 
-    init(initialRoutes: Routes<Screen>) {
+    init(initialRoutes: Routes<Screen> = []) {
         self.routes = initialRoutes
         self.oldRoutes = initialRoutes
         $routes
             .handleEvents(
-                receiveOutput: { [weak self] routes in
-                    if let routes = self?.routes,
-                       let oldRoutes = self?.oldRoutes,
-                       let diff = diff(oldRoutes, routes) {
+                receiveOutput: { [weak self] newRoutes in
+                    let diffableRoutes = newRoutes.map({ String(reflecting: $0.screen) })
+                    if let diffableOldRoutes = self?.oldRoutes?.map({ String(reflecting: $0.screen) }),
+                       let diff = diff(diffableOldRoutes, diffableRoutes) {
+                        print("** NEW ROUTE **")
                         print(diff)
+                        self?.oldRoutes = newRoutes
                     }
-                })
-            .sink { _ in
-                //
-            }
+                }
+            )
+            .sink { _ in return }
             .store(in: &cancellable)
     }
 
